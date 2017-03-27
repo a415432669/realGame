@@ -49,6 +49,7 @@
 				var divTitle = document.getElementById("divTitle");
 				var pageBtn = document.getElementById("pageBtn");
 				var userName = document.getElementById("userName");
+				var btnState = true;
 				inputDiv.className = "inputDivStart";
 				btn.className = "btnStart";
 				var length = arr.length;
@@ -58,7 +59,9 @@
 				}
 				
 				btn.addEventListener("click",function(){
-					var randomNum;
+					
+					if(btnState){
+						var randomNum;
 					if(userName.value==""||userName.value=="请输入您的名字"){
 						divTitle.innerHTML = "你叫什么名字？";
 						divTitle.style.display = "block";
@@ -75,21 +78,27 @@
 					btn.style.left = "200%";
 					result.style.top = "0%";
 					main.style.backgroundColor = "rgba(255,255,255,0.8)";
+					}
 					
-				
+					
+					btnState = false;
 				
 				})
 				
 				
 				pageBtn.addEventListener("click",function(){
+					console.log("123");
 					userName.value="请输入您的名字";
-					divImg.removeChild(newImg);
+					if(userName.value!==""&&userName.value!=="请输入您的名字"){
+						divImg.removeChild(newImg);
+					}
 					divImg.style.display = "none";
 					divTitle.style.display = "none";
 					inputDiv.style.left = "50%";
 					btn.style.left = "50%";
 					result.style.top = "100%";
 					main.style.backgroundColor = "rgba(255,255,255,0)";
+					btnState = true;
 				});
 			}
 			
